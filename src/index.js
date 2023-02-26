@@ -1,1 +1,3 @@
-console.log("hello");
+import { displayTodos } from "./dom.js";
+
+displayTodos();
