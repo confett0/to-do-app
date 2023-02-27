@@ -1,3 +1,3 @@
-import { displayTodos } from "./dom.js";
+import { displayTodos } from "./dom";
 
 displayTodos();

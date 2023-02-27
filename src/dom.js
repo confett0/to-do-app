@@ -2,15 +2,23 @@ import { todoList } from "./task.js";
 
 const wrap = document.querySelector(".todo-wrap");
 
+const createElement = (el, className, content) => {
+  const element = document.createElement(el);
+  element.setAttribute("class", className);
+  element.textContent = content;
+  return element;
+}
+
 const createTodoDiv = (todo) => {
-  const todoDiv = document.createElement("div");
-  todoDiv.classList.add("todo");
+  const todoDiv = createElement("div", "todo");
   todoDiv.id = todoList.list.indexOf(todo);
 
-  const todoName = document.createElement("p");
-  todoName.textContent = todo.name;
+  const checkbox = createElement("input");
+  checkbox.setAttribute("type","checkbox");
 
-  todoDiv.appendChild(todoName);
+  const todoName = createElement("p","todo-name", todo.name);
+
+  todoDiv.append(checkbox, todoName);
   wrap.appendChild(todoDiv);
 }
 

@@ -18,14 +18,13 @@ class Task {
 
 const todoList = {
   list: [{name: "read"}, {name: "sleep"}],
-  addTasks(task) {
-    this.list.push(task);
+  addTask(taskName, taskCategory, taskDate, taskPriority) {
+    this.list.push(new Task(taskName, taskCategory, taskDate, taskPriority));
   },
-  removeTasks(task) {
+  removeTask(task) {
     this.list.splice(this.list.indexOf(task), 1);
   }
 };
 
-const createNewTask = (taskName) => new Task(taskName);
 
 export {todoList};
