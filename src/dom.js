@@ -18,14 +18,20 @@ const createTodoDiv = (todo) => {
 
   const todoName = createElement("p","todo-name", todo.name);
 
-  todoDiv.append(checkbox, todoName);
-  wrap.appendChild(todoDiv);
+  const deleteTodo = createElement("div","delete-button","x");
 
+  todoDiv.append(checkbox, todoName, deleteTodo);
+  wrap.appendChild(todoDiv);
+// move event listeners somewhere for cleaner code
   checkbox.addEventListener("change", todo.doneUndone);
+  deleteTodo.addEventListener("click", () => {
+    todoList.removeTask(todo);
+    displayTodos();
+  });
 }
 
 const displayTodos = () => {
-
+  wrap.innerHTML = "";
   todoList.list.map(todo => createTodoDiv(todo));
 }
 
