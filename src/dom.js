@@ -35,5 +35,22 @@ const displayTodos = () => {
   todoList.list.map(todo => createTodoDiv(todo));
 }
 
+const form = document.getElementById("new-todo");
+
+form.onsubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+  const newTodo = {};
+
+  formData.forEach((value, key) => (newTodo[key] = value));
+  console.log(newTodo);
+
+  todoList.addTask(newTodo.name, newTodo.category, newTodo.priority);
+  console.log(todoList.list);
+  form.reset();
+  displayTodos();
+};
+
+
 
 export { displayTodos };
