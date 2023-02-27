@@ -16,7 +16,7 @@
   \********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"displayTodos\": () => (/* binding */ displayTodos)\n/* harmony export */ });\n/* harmony import */ var _task_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task.js */ \"./src/task.js\");\n\n\nconst wrap = document.querySelector(\".todo-wrap\");\n\nconst createTodoDiv = (todo) => {\n  const todoDiv = document.createElement(\"div\");\n  todoDiv.classList.add(\"todo\");\n  todoDiv.id = _task_js__WEBPACK_IMPORTED_MODULE_0__.todoList.list.indexOf(todo);\n\n  const todoName = document.createElement(\"p\");\n  todoName.textContent = todo.name;\n\n  todoDiv.appendChild(todoName);\n  wrap.appendChild(todoDiv);\n}\n\nconst displayTodos = () => {\n\n  _task_js__WEBPACK_IMPORTED_MODULE_0__.todoList.list.map(todo => createTodoDiv(todo));\n}\n\n\n\n//# sourceURL=webpack://to-do-app/./src/dom.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"displayTodos\": () => (/* binding */ displayTodos)\n/* harmony export */ });\n/* harmony import */ var _task_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./task.js */ \"./src/task.js\");\n\n\nconst wrap = document.querySelector(\".todo-wrap\");\n\nconst createElement = (el, className, content) => {\n  const element = document.createElement(el);\n  element.setAttribute(\"class\", className);\n  element.textContent = content;\n  return element;\n}\n\nconst createTodoDiv = (todo) => {\n  const todoDiv = createElement(\"div\", \"todo\");\n  todoDiv.id = _task_js__WEBPACK_IMPORTED_MODULE_0__.todoList.list.indexOf(todo);\n\n  const checkbox = createElement(\"input\");\n  checkbox.setAttribute(\"type\",\"checkbox\");\n\n  const todoName = createElement(\"p\",\"todo-name\", todo.name);\n\n  todoDiv.append(checkbox, todoName);\n  wrap.appendChild(todoDiv);\n}\n\nconst displayTodos = () => {\n\n  _task_js__WEBPACK_IMPORTED_MODULE_0__.todoList.list.map(todo => createTodoDiv(todo));\n}\n\n\n\n//# sourceURL=webpack://to-do-app/./src/dom.js?");
 
 /***/ }),
 
@@ -26,7 +26,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom.js */ \"./src/dom.js\");\n\n\n(0,_dom_js__WEBPACK_IMPORTED_MODULE_0__.displayTodos)();\n\n//# sourceURL=webpack://to-do-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n\n\n(0,_dom__WEBPACK_IMPORTED_MODULE_0__.displayTodos)();\n\n//# sourceURL=webpack://to-do-app/./src/index.js?");
 
 /***/ }),
 
@@ -36,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom
   \*********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"todoList\": () => (/* binding */ todoList)\n/* harmony export */ });\nclass Task {\n  constructor(name, category, dueDate, priority) {\n    this.name = name;\n    this.category = category;\n    this.dueDate = dueDate;\n    this.priority = priority;\n    this.done = false;\n  }\n\n  doneUndone() {\n    if (this.done === false) {\n      this.done = true;\n    } else {\n      this.done = false;\n    }\n  }\n}\n\nconst todoList = {\n  list: [{name: \"read\"}, {name: \"sleep\"}],\n  addTasks(task) {\n    this.list.push(task);\n  },\n  removeTasks(task) {\n    this.list.splice(this.list.indexOf(task), 1);\n  }\n};\n\nconst createNewTask = (taskName) => new Task(taskName);\n\n\n\n\n//# sourceURL=webpack://to-do-app/./src/task.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"todoList\": () => (/* binding */ todoList)\n/* harmony export */ });\nclass Task {\n  constructor(name, category, dueDate, priority) {\n    this.name = name;\n    this.category = category;\n    this.dueDate = dueDate;\n    this.priority = priority;\n    this.done = false;\n  }\n\n  doneUndone() {\n    if (this.done === false) {\n      this.done = true;\n    } else {\n      this.done = false;\n    }\n  }\n}\n\nconst todoList = {\n  list: [{name: \"read\"}, {name: \"sleep\"}],\n  addTask(taskName, taskCategory, taskDate, taskPriority) {\n    this.list.push(new Task(taskName, taskCategory, taskDate, taskPriority));\n  },\n  removeTask(task) {\n    this.list.splice(this.list.indexOf(task), 1);\n  }\n};\n\n\n\n\n\n//# sourceURL=webpack://to-do-app/./src/task.js?");
 
 /***/ })
 
