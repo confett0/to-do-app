@@ -13,11 +13,12 @@ class Task {
     } else {
       this.done = false;
     }
+    console.log(this);
   }
 }
 
 const todoList = {
-  list: [{name: "read"}, {name: "sleep"}],
+  list: [],
   addTask(taskName, taskCategory, taskDate, taskPriority) {
     this.list.push(new Task(taskName, taskCategory, taskDate, taskPriority));
   },
@@ -26,5 +27,8 @@ const todoList = {
   }
 };
 
+todoList.addTask("eat");
+todoList.addTask("sleep");
+todoList.addTask("repeat");
 
-export {todoList};
+export {Task, todoList};
