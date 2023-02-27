@@ -43,7 +43,6 @@ form.onsubmit = (e) => {
   const newTodo = {};
 
   formData.forEach((value, key) => (newTodo[key] = value));
-  console.log(newTodo);
 
   todoList.addTask(newTodo.name, newTodo.category, newTodo.priority);
   console.log(todoList.list);
