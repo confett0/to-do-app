@@ -17,18 +17,4 @@ class Task {
   }
 }
 
-const todoList = {
-  list: [],
-  addTask(taskName, taskCategory, taskDate, taskPriority) {
-    this.list.push(new Task(taskName, taskCategory, taskDate, taskPriority));
-  },
-  removeTask(task) {
-    this.list.splice(this.list.indexOf(task), 1);
-  }
-};
-
-todoList.addTask("eat");
-todoList.addTask("sleep");
-todoList.addTask("repeat");
-
-export {Task, todoList};
+export {Task};
