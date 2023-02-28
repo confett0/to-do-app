@@ -1,5 +1,5 @@
 import { Task } from "./task";
-import { inbox } from "./projects";
+import { createProject, inbox } from "./projects";
 
 const wrap = document.querySelector(".todo-wrap");
 
@@ -36,21 +36,37 @@ const displayTodos = () => {
   inbox.list.map(todo => createTodoDiv(todo));
 }
 
-const form = document.getElementById("new-todo");
+// Todo form
 
-form.onsubmit = (e) => {
+const todoForm = document.getElementById("new-todo");
+
+todoForm.onsubmit = (e) => {
   e.preventDefault();
-  const formData = new FormData(form);
+  const formData = new FormData(todoForm);
   const newTodo = {};
 
   formData.forEach((value, key) => (newTodo[key] = value));
 
   inbox.addTask(newTodo.name, newTodo.category, newTodo.priority);
-  console.log(inbox.list);
-  form.reset();
+  
+  todoForm.reset();
   displayTodos();
 };
 
+// Project form
 
+const projectForm = document.getElementById("project-form");
+
+projectForm.onsubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(projectForm);
+  const newProject = {};
+
+  formData.forEach((value, key) => (newProject[key] = value));
+  createProject(newProject.name);
+
+  projectForm.reset();
+
+}
 
 export { displayTodos };
