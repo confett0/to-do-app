@@ -15,19 +15,25 @@ class Project {
     }
 }
 
-const projectList = [];
+const projectList = {
 
-const createProject = (name) => {
+    list: [],
+
+    createProject(name) {
     const newProject = new Project(name);
-    projectList.push(newProject);
-
+    this.list.push(newProject);
     return newProject;
+    },
+
+    deleteProject(name) {
+        this.list.splice(this.list.indexOf(name,1));
+    }
 }
 
-const inbox = createProject("Inbox");
+const inbox = new Project("Inbox");
 
 inbox.addTask("eat");
 inbox.addTask("sleep");
 inbox.addTask("repeat");
 
-export { createProject, inbox };
+export { projectList, inbox };
