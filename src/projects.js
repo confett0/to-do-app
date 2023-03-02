@@ -22,7 +22,7 @@ const projectList = {
     createProject(name) {
     const newProject = new Project(name);
     this.list.push(newProject);
-    return newProject;
+        return newProject;
     },
 
     deleteProject(name) {
@@ -31,9 +31,12 @@ const projectList = {
 }
 
 const inbox = new Project("Inbox");
+const work = projectList.createProject("Work");
+work.addTask("code");
+
 
 inbox.addTask("eat");
 inbox.addTask("sleep");
 inbox.addTask("repeat");
 
-export { projectList, inbox };
+export { Project, projectList, inbox, work };
