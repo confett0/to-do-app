@@ -17,7 +17,7 @@
 
     <main>
         <div class="sidebar">
-            <h2 id="inbox">Inbox</h2>
+            <h2 id="show-all">All</h2>
             <button type="button" id="new-project">New project</button>
             <form id="project-form">
                 <label for="project-name">Name</label>
@@ -33,7 +33,10 @@
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name" required>
                     <label for="category">Category</label>
-                    <input type="text" name="category" id="category">
+                    <select name="category" id="category">
+                    <option value="inbox">Inbox</option>
+                    <option value="work">Work</option>
+                    </select>
                     <label for="priority">Priority</label>
                     <select name="priority" id="priority">
                         <option value="low">Low</option>
