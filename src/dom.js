@@ -66,13 +66,17 @@ const createProjectList = () => {
 
 // Create select options from category array
 
-const categorySelect = document.getElementById("category");
+const generateSelectOptions = () => {
 
+const categorySelect = document.getElementById("category");
+categorySelect.innerHTML = "";
 for (let i = 0; i < taskManager.categories.length; i++) {
   const el = document.createElement("option");
   el.textContent = taskManager.categories[i];
   el.value = taskManager.categories[i];
   categorySelect.appendChild(el);
+}
+  return categorySelect;
 }
 
 const todoForm = document.getElementById("new-todo");
@@ -101,7 +105,8 @@ projectForm.onsubmit = (e) => {
   formData.forEach((value, key) => (newProject[key] = value));
   taskManager.categories.push(newProject.name);
   createProjectList();
+  generateSelectOptions();
   projectForm.reset();
 };
 
-export { displayTodos, createProjectList };
+export { displayTodos, createProjectList, generateSelectOptions };
