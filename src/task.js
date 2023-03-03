@@ -13,8 +13,24 @@ class Task {
     } else {
       this.done = false;
     }
-    console.log(this);
   }
 }
 
-export {Task};
+const taskManager = {
+  list: [],
+  categories: [],
+
+  addTask(taskName, taskCategory, taskDate, taskPriority) {
+    this.list.push(new Task(taskName, taskCategory, taskDate, taskPriority));
+  },
+
+  deleteTask(task) {
+    this.list.splice(this.list.indexOf(task), 1);
+  },
+};
+
+taskManager.addTask("eat");
+taskManager.addTask("sleep");
+taskManager.addTask("repeat");
+
+export { Task, taskManager };

@@ -1,4 +1,4 @@
-import { Task } from "./task";
+import { Task, taskManager } from "./task";
 import { Project, projectList, inbox, work } from "./projects";
 
 const wrap = document.querySelector(".todo-wrap");
@@ -11,9 +11,9 @@ const createElement = (el, className, content) => {
   return element;
 };
 
-const createTodoDiv = (todo, project) => {
+const createTodoDiv = (todo) => {
   const todoDiv = createElement("div", "todo");
-  todoDiv.id = project.list.indexOf(todo);
+  todoDiv.id = taskManager.list.indexOf(todo);
 
   const checkbox = createElement("input", "checkbox");
   checkbox.setAttribute("type", "checkbox");
@@ -28,40 +28,38 @@ const createTodoDiv = (todo, project) => {
   // move event listeners somewhere for cleaner code
   checkbox.addEventListener("change", todo.doneUndone);
   deleteTodo.addEventListener("click", () => {
-    project.deleteTask(todo);
-    displayTodos(project);
+    taskManager.deleteTask(todo);
+    displayTodos();
   });
 
   return todoDiv;
 };
 
-const displayTodos = (project) => {
+const displayTodos = () => {
   wrap.innerHTML = "";
-  project.list.map((todo) => createTodoDiv(todo, project));
+  taskManager.list.map((todo) => createTodoDiv(todo));
 };
 
 // Sidebar
 
-const inboxLink = document.getElementById("inbox");
-inboxLink.addEventListener("click", () => {
-displayTodos(inbox);
+const showAll = document.getElementById("show-all");
+showAll.addEventListener("click", () => {
+  displayTodos();
 });
 
 const createProjectLi = (project) => {
-  const projectLi = createElement("li", "project", project.name);
-  const idName = project.name.toLowerCase()
+  const projectLi = createElement("li", "project", project);
+  const idName = project.toLowerCase();
   projectLi.setAttribute("id", idName);
 
   projectWrap.appendChild(projectLi);
 
-  projectLi.addEventListener("click", () => displayTodos(project));
-
+  // projectLi.addEventListener("click", () => displayTodos(project));
 };
 
 const createProjectList = () => {
   projectWrap.innerHTML = "";
-  projectList.list.map((project) => createProjectLi(project));
-
+  taskManager.categories.map((project) => createProjectLi(project));
 };
 
 // Todo form
@@ -75,10 +73,9 @@ todoForm.onsubmit = (e) => {
 
   formData.forEach((value, key) => (newTodo[key] = value));
 
-  inbox.addTask(newTodo.name, newTodo.category, newTodo.priority);
-
+  taskManager.addTask(newTodo.name);
+  displayTodos();
   todoForm.reset();
-  displayTodos(inbox);
 };
 
 // Project form
@@ -91,10 +88,9 @@ projectForm.onsubmit = (e) => {
   const newProject = {};
 
   formData.forEach((value, key) => (newProject[key] = value));
-  projectList.createProject(newProject.name);
+  taskManager.categories.push(newProject.name);
   createProjectList();
   projectForm.reset();
 };
-
 
 export { displayTodos, createProjectList };
