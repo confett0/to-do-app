@@ -1,5 +1,5 @@
 import { displayTodos, createProjectList } from "./dom";
-import { inbox } from "./projects";
+import { taskManager } from "./task";
 
-displayTodos();
+displayTodos(taskManager.list);
 createProjectList();

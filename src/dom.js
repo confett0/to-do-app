@@ -1,5 +1,5 @@
 import { Task, taskManager } from "./task";
-import { Project, projectList, inbox, work } from "./projects";
+import { projectFilter } from "./todo-app";
 
 const wrap = document.querySelector(".todo-wrap");
 const projectWrap = document.querySelector(".project-list");
@@ -29,22 +29,22 @@ const createTodoDiv = (todo) => {
   checkbox.addEventListener("change", todo.doneUndone);
   deleteTodo.addEventListener("click", () => {
     taskManager.deleteTask(todo);
-    displayTodos();
+    wrap.removeChild(todoDiv);
   });
 
   return todoDiv;
 };
 
-const displayTodos = () => {
+const displayTodos = (list) => {
   wrap.innerHTML = "";
-  taskManager.list.map((todo) => createTodoDiv(todo));
+  list.map((todo) => createTodoDiv(todo));
 };
 
 // Sidebar
 
 const showAll = document.getElementById("show-all");
 showAll.addEventListener("click", () => {
-  displayTodos();
+  displayTodos(taskManager.list);
 });
 
 const createProjectLi = (project) => {
@@ -54,7 +54,7 @@ const createProjectLi = (project) => {
 
   projectWrap.appendChild(projectLi);
 
-  // projectLi.addEventListener("click", () => displayTodos(project));
+  projectLi.addEventListener("click", (e) => displayTodos(projectFilter(e.target.id)));
 };
 
 const createProjectList = () => {
@@ -74,7 +74,7 @@ todoForm.onsubmit = (e) => {
   formData.forEach((value, key) => (newTodo[key] = value));
 
   taskManager.addTask(newTodo.name);
-  displayTodos();
+  displayTodos(taskManager.list);
   todoForm.reset();
 };
 

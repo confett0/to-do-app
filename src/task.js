@@ -18,7 +18,7 @@ class Task {
 
 const taskManager = {
   list: [],
-  categories: [],
+  categories: ["home","work"],
 
   addTask(taskName, taskCategory, taskDate, taskPriority) {
     this.list.push(new Task(taskName, taskCategory, taskDate, taskPriority));
@@ -29,8 +29,8 @@ const taskManager = {
   },
 };
 
-taskManager.addTask("eat");
-taskManager.addTask("sleep");
-taskManager.addTask("repeat");
+taskManager.addTask("eat", "home");
+taskManager.addTask("sleep", "work");
+taskManager.addTask("repeat", "home");
 
 export { Task, taskManager };
