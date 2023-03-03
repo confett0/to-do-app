@@ -64,6 +64,17 @@ const createProjectList = () => {
 
 // Todo form
 
+// Create select options from category array
+
+const categorySelect = document.getElementById("category");
+
+for (let i = 0; i < taskManager.categories.length; i++) {
+  const el = document.createElement("option");
+  el.textContent = taskManager.categories[i];
+  el.value = taskManager.categories[i];
+  categorySelect.appendChild(el);
+}
+
 const todoForm = document.getElementById("new-todo");
 
 todoForm.onsubmit = (e) => {
