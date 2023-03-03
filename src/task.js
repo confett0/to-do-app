@@ -27,6 +27,10 @@ const taskManager = {
   deleteTask(task) {
     this.list.splice(this.list.indexOf(task), 1);
   },
+
+  deleteCategory(category) {
+    this.categories.splice(this.categories.indexOf(category),1);
+  }
 };
 
 taskManager.addTask("eat", "home");
