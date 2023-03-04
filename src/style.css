@@ -147,14 +147,19 @@ main {
 
 button {
   background: var(--accent-color);
-  border: none;
+  border: 1px solid var(--accent-color);
   border-radius: 5px;
   color: var(--text-color);
   cursor: pointer;
   font-size: 0.9rem;
   text-transform: uppercase;
   height: 45px;
-  width: 150px;
+  width: 130px;
+}
+
+.cancel-button {
+  background-color: var(--todo-color);
+  border: 1px solid var(--text-color);
 }
 
 #add-task-button {

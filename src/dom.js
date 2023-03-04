@@ -96,7 +96,9 @@ todoForm.onsubmit = (e) => {
 // To do form modal
 
 const openModal = document.getElementById("add-task-button");
+const closeModal = document.getElementById("cancel-task");
 openModal.addEventListener("click", () => todoForm.style.display = "block");
+closeModal.addEventListener("click", () => todoForm.style.display = "none");
 
 // Project form
 
