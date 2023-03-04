@@ -33,25 +33,27 @@
         <div class="content">
             <div class="content-wrap">
                 
-                <form id="new-todo">
-                    <label for="name">Name</label>
-                    <input type="text" name="name" id="name" required>
-                    <label for="category">Category</label>
-                    <select name="category" id="category">
-                    </select>
-                    <label for="priority">Priority</label>
-                    <select name="priority" id="priority">
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                    <button type="submit">Add</button>
-                </form>
             
             <div class="todo-wrap"></div>
             
         </div>
-        <button type="button" id="new-task">+</button>
+        <form id="task-form">
+                    <div class="form-rows">
+                        <label for="name">Name</label>
+                        <input type="text" name="name" id="name" required>
+                    </div>
+                    <div class="form-rows">
+                        <label for="category">Category</label>
+                        <select name="category" id="category">
+                        </select>
+                    </div>
+                    <div class="form-rows">
+                        <label for="date">Date</label>
+                        <input type="date">
+                    </div>
+                    <button type="submit">Add</button>
+                </form>
+        <button type="button" id="add-task-button">+</button>
         </div>
     </main>
     <footer></footer>
