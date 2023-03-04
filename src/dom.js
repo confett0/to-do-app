@@ -79,7 +79,7 @@ for (let i = 0; i < taskManager.categories.length; i++) {
   return categorySelect;
 }
 
-const todoForm = document.getElementById("new-todo");
+const todoForm = document.getElementById("task-form");
 
 todoForm.onsubmit = (e) => {
   e.preventDefault();
@@ -92,6 +92,11 @@ todoForm.onsubmit = (e) => {
   displayTodos(taskManager.list);
   todoForm.reset();
 };
+
+// To do form modal
+
+const openModal = document.getElementById("add-task-button");
+openModal.addEventListener("click", () => todoForm.style.display = "block");
 
 // Project form
 
@@ -108,5 +113,6 @@ projectForm.onsubmit = (e) => {
   generateSelectOptions();
   projectForm.reset();
 };
+
 
 export { displayTodos, createProjectList, generateSelectOptions };
