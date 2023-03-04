@@ -74,6 +74,14 @@ main {
   padding: 15px 20px;
 }
 
+.todo-category {
+  background-color: var(--accent-color);
+  border-radius: 10px;
+  font-size: 0.6rem;
+  padding: 2px 7px;
+  text-transform: uppercase;
+}
+
 .delete-button {
   padding: 5px;
   margin-left: auto;

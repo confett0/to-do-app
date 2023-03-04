@@ -19,10 +19,12 @@ const createTodoDiv = (todo) => {
   checkbox.setAttribute("type", "checkbox");
 
   const todoName = createElement("p", "todo-name", todo.name);
+  const todoCategory = createElement("p", "todo-category", todo.category);
+  const todoDate = createElement("p", "todo-date", todo.date);
 
   const deleteTodo = createElement("div", "delete-button", "x");
 
-  todoDiv.append(checkbox, todoName, deleteTodo);
+  todoDiv.append(checkbox, todoName, todoCategory, todoDate, deleteTodo);
   wrap.appendChild(todoDiv);
 
   // move event listeners somewhere for cleaner code
@@ -88,7 +90,8 @@ todoForm.onsubmit = (e) => {
 
   formData.forEach((value, key) => (newTodo[key] = value));
 
-  taskManager.addTask(newTodo.name);
+  taskManager.addTask(newTodo.name, newTodo.category, newTodo.date);
+
   displayTodos(taskManager.list);
   todoForm.reset();
 };

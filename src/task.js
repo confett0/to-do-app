@@ -1,9 +1,8 @@
 class Task {
-  constructor(name, category, priority) {
+  constructor(name, category, date) {
     this.name = name;
     this.category = category;
-    // this.dueDate = dueDate; we'll had date later
-    this.priority = priority;
+    this.date = date;
     this.done = false;
   }
 
