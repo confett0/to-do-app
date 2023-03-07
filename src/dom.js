@@ -42,7 +42,10 @@ const createTodoDiv = (todo) => {
   wrap.appendChild(todoDiv);
 
   // move event listeners somewhere for cleaner code
-  checkbox.addEventListener("change", todo.doneUndone);
+  checkbox.addEventListener("change", () => {
+    todoName.classList.toggle("done");
+    todo.doneUndone();
+  });
   editButton.addEventListener("click", () => fillEditForm(todo));
   deleteTodo.addEventListener("click", () => {
     taskManager.deleteTask(todo);
