@@ -4,6 +4,7 @@ class Task {
     this.category = category;
     this.date = date;
     this.done = false;
+    this.id = Math.floor(Math.random() * 10000);
   }
 
   doneUndone() {
@@ -13,14 +14,20 @@ class Task {
       this.done = false;
     }
   }
+
+  editTask(newName,newCategory,newDate) {
+    this.name = newName;
+    this.category = newCategory;
+    this.date = newDate;
+  }
 }
 
 const taskManager = {
   list: [],
   categories: ["home","work"],
 
-  addTask(taskName, taskCategory, taskDate, taskPriority) {
-    this.list.push(new Task(taskName, taskCategory, taskDate, taskPriority));
+  addTask(taskName, taskCategory, taskDate) {
+    this.list.push(new Task(taskName, taskCategory, taskDate));
   },
 
   deleteTask(task) {
