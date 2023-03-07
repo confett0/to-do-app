@@ -17,16 +17,21 @@
 
     <main>
         <div class="sidebar">
-            <h2 id="show-all">All</h2>
-            <h2>Today</h2>
-            <h2>Upcoming</h2>
-            <h2>Projects</h2>
-            <ul class="project-list"></ul>
-            <button type="button" id="new-project">New project</button>
+            <div class="sidebar-links">
+                <h2 id="show-all">All</h2>
+                <h2>Today</h2>
+                <h2>Upcoming</h2>
+                <h2>Projects</h2>
+                <ul class="project-list"></ul>
+                <button type="button" id="add-project-button">New project</button>
+            </div>
             <form id="project-form">
-                <label for="project-name">Name</label>
-                <input type="text" name="name" id="project-name" required>
+                <div class="form-rows">
+                    <label for="project-name">Project name</label>
+                    <input type="text" name="name" id="project-name" required>
+                </div>
                 <button type="submit">Add</button>
+                <button class="cancel-button" id="cancel-project" type="submit">Cancel</button>
             </form>
             
         </div>
@@ -37,7 +42,7 @@
             <div class="todo-wrap"></div>
             
         </div>
-        <form id="task-form">
+        <form class="task-form">
                     <div class="form-rows">
                         <label for="name">Name</label>
                         <input type="text" name="name" id="name" required>
@@ -51,7 +56,7 @@
                         <label for="date">Date</label>
                         <input type="date" name="date" id="date">
                     </div>
-                    <button type="submit">Add</button>
+                    <button id="form-add-button" type="submit">Add</button>
                     <button class="cancel-button" id="cancel-task" type="submit">Cancel</button>
                 </form>
         <button type="button" id="add-task-button">+</button>
