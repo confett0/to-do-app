@@ -1,5 +1,7 @@
 import { Task, taskManager } from "./task";
 import { projectFilter } from "./todo-app";
+import Edit from "./assets/edit.png";
+import Delete from "./assets/delete.png";
 
 const wrap = document.querySelector(".todo-wrap");
 const projectWrap = document.querySelector(".project-list");
@@ -22,8 +24,11 @@ const createTodoDiv = (todo) => {
   const todoCategory = createElement("p", "todo-category", todo.category);
   const todoDate = createElement("p", "todo-date", todo.date);
 
-  const editButton = createElement("div", "edit-button", "e");
-  const deleteTodo = createElement("div", "delete-button", "x");
+  const editButton = createElement("img", "edit-button");
+  const deleteTodo = createElement("img", "delete-button");
+
+  editButton.src = Edit;
+  deleteTodo.src = Delete;
 
   todoDiv.append(
     checkbox,
