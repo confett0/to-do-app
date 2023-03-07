@@ -5,6 +5,7 @@ import Delete from "./assets/delete.png";
 
 const wrap = document.querySelector(".todo-wrap");
 const projectWrap = document.querySelector(".project-list");
+const projectTitle = document.querySelector(".project-title");
 
 const createElement = (el, className, content) => {
   const element = document.createElement(el);
@@ -61,6 +62,7 @@ const displayTodos = (list) => {
 const showAll = document.getElementById("show-all");
 showAll.addEventListener("click", () => {
   displayTodos(taskManager.list);
+  projectTitle.textContent = "All tasks";
 });
 
 const createProjectLi = (project) => {
@@ -70,9 +72,10 @@ const createProjectLi = (project) => {
 
   projectWrap.appendChild(projectLi);
 
-  projectLi.addEventListener("click", (e) =>
-    displayTodos(projectFilter(e.target.id))
-  );
+  projectLi.addEventListener("click", (e) => {
+    displayTodos(projectFilter(e.target.id));
+    projectTitle.textContent = e.target.id;
+  })
 };
 
 const createProjectList = () => {

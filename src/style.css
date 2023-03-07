@@ -30,6 +30,10 @@ h2 {
   margin-bottom: 20px;
 }
 
+hr {
+  margin-bottom: 20px;
+}
+
 header {
   background-color: var(--todo-color);
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
@@ -60,10 +64,16 @@ main {
 .content-wrap {
   margin: auto;
   max-width: 700px;
+  padding: 25px 0;
 }
 
 .todo-wrap {
   padding: 20px;
+}
+
+.project-title {
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .todo {
@@ -177,7 +187,7 @@ button {
 }
 
 #add-task-button {
-  background: linear-gradient(43deg, #ed38d5 0%, #ffb137 100%);
+  background: linear-gradient(45deg, #ed38d5 0%, #ffb137 100%);
   border-radius: 50%;
   box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
   font-size: 3rem;
@@ -186,6 +196,20 @@ button {
   position: absolute;
   right: 5%;
   bottom: 10%;
+}
+
+.project-list {
+  list-style-type: none;
+  text-transform: capitalize;
+  margin-bottom: 25px;
+}
+
+.project-list li {
+  margin-bottom: 12px;
+}
+
+#add-project-button {
+  background: linear-gradient(45deg, #ed38d5 0%, #ffb137 100%);
 }
 
 form {

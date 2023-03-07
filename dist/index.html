@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>To Do App</title>
-    <link rel="stylesheet" href="../src/style.css">
+    <link rel="stylesheet" href="../src/style.css" />
     <script src="./main.js" defer></script>
-</head>
+  </head>
 
-<body>
+  <body>
     <header>
-        <h1>To Do List</h1>
+      <h1>To Do List</h1>
     </header>
 
     <main>
-        <div class="sidebar">
-            <div class="sidebar-links">
-                <h2 id="show-all">All</h2>
-                <h2>Today</h2>
-                <h2>Upcoming</h2>
-                <h2>Projects</h2>
-                <ul class="project-list"></ul>
-                <button type="button" id="add-project-button">New project</button>
-            </div>
-            <form id="project-form">
-                <div class="form-rows">
-                    <label for="project-name">Project name</label>
-                    <input type="text" name="name" id="project-name" required>
-                </div>
-                <button type="submit">Add</button>
-                <button class="cancel-button" id="cancel-project" type="submit">Cancel</button>
-            </form>
-            
+      <div class="sidebar">
+        <div class="sidebar-links">
+          <h2 id="show-all">All</h2>
+          <h2>Today</h2>
+          <h2>Upcoming</h2>
+          <hr>
+          <h2>Projects</h2>
+          <ul class="project-list"></ul>
+          <button type="button" id="add-project-button">New project</button>
         </div>
-        <div class="content">
-            <div class="content-wrap">
-                
-            
-            <div class="todo-wrap"></div>
-            
+        <form id="project-form">
+          <div class="form-rows">
+            <label for="project-name">Project name</label>
+            <input type="text" name="name" id="project-name" required />
+          </div>
+          <button type="submit">Add</button>
+          <button class="cancel-button" id="cancel-project" type="submit">
+            Cancel
+          </button>
+        </form>
+      </div>
+      <div class="content">
+        <div class="content-wrap">
+          <h2 class="project-title">All tasks</h2>
+          <div class="todo-wrap"></div>
         </div>
         <form class="task-form">
-                    <div class="form-rows">
-                        <label for="name">Name</label>
-                        <input type="text" name="name" id="name" required>
-                    </div>
-                    <div class="form-rows">
-                        <label for="category">Category</label>
-                        <select name="category" id="category">
-                        </select>
-                    </div>
-                    <div class="form-rows">
-                        <label for="date">Date</label>
-                        <input type="date" name="date" id="date">
-                    </div>
-                    <button id="form-add-button" type="submit">Add</button>
-                    <button class="cancel-button" id="cancel-task" type="submit">Cancel</button>
-                </form>
+          <div class="form-rows">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" required />
+          </div>
+          <div class="form-rows">
+            <label for="category">Category</label>
+            <select name="category" id="category"></select>
+          </div>
+          <div class="form-rows">
+            <label for="date">Date</label>
+            <input type="date" name="date" id="date" />
+          </div>
+          <button id="form-add-button" type="submit">Add</button>
+          <button class="cancel-button" id="cancel-task" type="submit">
+            Cancel
+          </button>
+        </form>
         <button type="button" id="add-task-button">+</button>
-        </div>
+      </div>
     </main>
     <footer></footer>
-</body>
-
+  </body>
 </html>
