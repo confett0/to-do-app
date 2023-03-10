@@ -1,5 +1,6 @@
 import { Task, taskManager } from "./task";
 import { projectFilter } from "./todo-app";
+import { saveTasks, saveProjects, getTasks, getProjects } from "./localstorage";
 import Edit from "./assets/edit.png";
 import Delete from "./assets/delete.png";
 
@@ -50,6 +51,7 @@ const createTodoDiv = (todo) => {
   deleteTodo.addEventListener("click", () => {
     taskManager.deleteTask(todo);
     wrap.removeChild(todoDiv);
+  
   });
 
   return todoDiv;
@@ -115,6 +117,8 @@ const fillEditForm = (task) => {
   document.getElementById("date").value = task.date;
 };
 
+// Add todo
+
 todoForm.onsubmit = (e) => {
   e.preventDefault();
   const formData = new FormData(todoForm);
@@ -126,10 +130,14 @@ todoForm.onsubmit = (e) => {
     const editTodo = taskManager.list.filter(
       (task) => task.id == e.target.id
     )[0];
-
+    console.log(editTodo);
+    console.log(e.target.id);
     editTodo.editTask(newTodo.name, newTodo.category, newTodo.date);
+    
+  
   } else {
     taskManager.addTask(newTodo.name, newTodo.category, newTodo.date);
+  
   }
 
   displayTodos(taskManager.list);
@@ -137,11 +145,14 @@ todoForm.onsubmit = (e) => {
   todoForm.style.display = "none";
 };
 
-// To do form modal
+// Add to do form modal
 
 const openModal = document.getElementById("add-task-button");
 const closeModal = document.getElementById("cancel-task");
-openModal.addEventListener("click", () => (todoForm.style.display = "block"));
+openModal.addEventListener("click", () => {
+  document.getElementById("form-add-button").textContent = "Add";
+  todoForm.style.display = "block";
+});
 closeModal.addEventListener("click", () => (todoForm.style.display = "none"));
 
 // Project form

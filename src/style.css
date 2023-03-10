@@ -49,7 +49,7 @@ main {
 
 .sidebar {
   background-color: var(--todo-color);
-  width: 250px;
+  width: 220px;
 }
 
 .sidebar-links {
@@ -95,7 +95,7 @@ main {
   text-transform: uppercase;
 }
 
-.edit-button, delete-button {
+.edit-button, .delete-button {
   cursor: pointer;
 }
 
@@ -202,6 +202,10 @@ button {
   bottom: 10%;
 }
 
+#add-task-button:hover {
+  transform: rotate(-45deg);
+}
+
 .project-list {
   list-style-type: none;
   text-transform: capitalize;
@@ -214,6 +218,7 @@ button {
 
 #add-project-button {
   background: linear-gradient(45deg, #ed38d5 0%, #ffb137 100%);
+  width: 160px;
 }
 
 form {
