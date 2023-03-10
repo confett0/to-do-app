@@ -6,19 +6,19 @@ class Task {
     this.done = false;
     this.id = Math.floor(Math.random() * 10000);
   }
+}
 
-  doneUndone() {
-    if (this.done === false) {
-      this.done = true;
-    } else {
-      this.done = false;
-    }
-  }
+const editTask = (todo, newName,newCategory,newDate) => {
+  todo.name = newName;
+  todo.category = newCategory;
+  todo.date = newDate;
+}
 
-  editTask(newName,newCategory,newDate) {
-    this.name = newName;
-    this.category = newCategory;
-    this.date = newDate;
+const doneUndone = (todo) => {
+  if (todo.done === false) {
+    todo.done = true;
+  } else {
+    todo.done = false;
   }
 }
 
@@ -43,4 +43,4 @@ taskManager.addTask("eat", "home");
 taskManager.addTask("sleep", "work");
 taskManager.addTask("repeat", "home");
 
-export { Task, taskManager };
+export { Task, taskManager, editTask, doneUndone };

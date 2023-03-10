@@ -1,4 +1,4 @@
-import { Task, taskManager } from "./task";
+import { Task, taskManager, editTask, doneUndone } from "./task";
 import { projectFilter } from "./todo-app";
 import { saveTasks, saveProjects, getTasks, getProjects } from "./localstorage";
 import Edit from "./assets/edit.png";
@@ -23,11 +23,22 @@ const createTodoDiv = (todo) => {
   checkbox.setAttribute("type", "checkbox");
 
   const todoName = createElement("p", "todo-name", todo.name);
+
+  if (todo.done === true) {
+    todoName.classList.add("done");
+    checkbox.checked = true;
+  } else if (todo.done === false) {
+    todoName.classList.remove("done");
+    checkbox.checked = false;
+  }
+
   const todoCategory = createElement("p", "todo-category", todo.category);
   const todoDate = createElement("p", "todo-date", todo.date);
 
   const editButton = createElement("img", "edit-button");
   const deleteTodo = createElement("img", "delete-button");
+
+ 
 
   editButton.src = Edit;
   deleteTodo.src = Delete;
@@ -45,13 +56,14 @@ const createTodoDiv = (todo) => {
   // move event listeners somewhere for cleaner code
   checkbox.addEventListener("change", () => {
     todoName.classList.toggle("done");
-    todo.doneUndone();
+    doneUndone(todo);
+    saveTasks();
   });
   editButton.addEventListener("click", () => fillEditForm(todo));
   deleteTodo.addEventListener("click", () => {
     taskManager.deleteTask(todo);
     wrap.removeChild(todoDiv);
-  
+    saveTasks();
   });
 
   return todoDiv;
@@ -66,6 +78,7 @@ const displayTodos = (list) => {
 
 const showAll = document.getElementById("show-all");
 showAll.addEventListener("click", () => {
+  getTasks();
   displayTodos(taskManager.list);
   projectTitle.textContent = "All tasks";
 });
@@ -130,16 +143,14 @@ todoForm.onsubmit = (e) => {
     const editTodo = taskManager.list.filter(
       (task) => task.id == e.target.id
     )[0];
-    console.log(editTodo);
-    console.log(e.target.id);
-    editTodo.editTask(newTodo.name, newTodo.category, newTodo.date);
-    
+    editTask(editTodo, newTodo.name, newTodo.category, newTodo.date);
   
   } else {
     taskManager.addTask(newTodo.name, newTodo.category, newTodo.date);
   
   }
-
+  saveTasks();
+  getTasks();
   displayTodos(taskManager.list);
   todoForm.reset();
   todoForm.style.display = "none";
