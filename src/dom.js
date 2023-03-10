@@ -106,6 +106,7 @@ const createProjectLi = (project) => {
 // Display list of projects from array
 
 const createProjectList = () => {
+  getProjects();
   projectWrap.innerHTML = "";
   taskManager.categories.map((project) => createProjectLi(project));
 };
@@ -121,6 +122,7 @@ const generateSelectOptions = () => {
     el.value = taskManager.categories[i];
     categorySelect.appendChild(el);
   }
+  
   return categorySelect;
 };
 
@@ -135,6 +137,7 @@ projectForm.onsubmit = (e) => {
 
   formData.forEach((value, key) => (newProject[key] = value));
   taskManager.categories.push(newProject.name);
+  saveProjects();
   createProjectList();
   generateSelectOptions();
   projectForm.reset();

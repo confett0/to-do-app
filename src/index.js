@@ -1,6 +1,6 @@
 import { displayTodos, createProjectList, generateSelectOptions } from "./dom";
 import { taskManager } from "./task";
-import { getTasks } from "./localstorage";
+import { getTasks, getProjects } from "./localstorage";
 
 getTasks();
 displayTodos(taskManager.list);
