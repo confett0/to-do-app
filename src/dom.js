@@ -8,12 +8,16 @@ const wrap = document.querySelector(".todo-wrap");
 const projectWrap = document.querySelector(".project-list");
 const projectTitle = document.querySelector(".project-title");
 
+// Helper functions for creating dom elements
+
 const createElement = (el, className, content) => {
   const element = document.createElement(el);
   element.setAttribute("class", className);
   element.textContent = content;
   return element;
 };
+
+// Create todo dom elements with event listeners
 
 const createTodoDiv = (todo) => {
   const todoDiv = createElement("div", "todo");
@@ -38,8 +42,6 @@ const createTodoDiv = (todo) => {
   const editButton = createElement("img", "edit-button");
   const deleteTodo = createElement("img", "delete-button");
 
- 
-
   editButton.src = Edit;
   deleteTodo.src = Delete;
 
@@ -53,7 +55,6 @@ const createTodoDiv = (todo) => {
   );
   wrap.appendChild(todoDiv);
 
-  // move event listeners somewhere for cleaner code
   checkbox.addEventListener("change", () => {
     todoName.classList.toggle("done");
     doneUndone(todo);
@@ -69,6 +70,8 @@ const createTodoDiv = (todo) => {
   return todoDiv;
 };
 
+// Render todos
+
 const displayTodos = (list) => {
   wrap.innerHTML = "";
   list.map((todo) => createTodoDiv(todo));
@@ -76,12 +79,16 @@ const displayTodos = (list) => {
 
 // Sidebar
 
+// Show all todos button
+
 const showAll = document.getElementById("show-all");
 showAll.addEventListener("click", () => {
   getTasks();
   displayTodos(taskManager.list);
   projectTitle.textContent = "All tasks";
 });
+
+// Create projects dom elements
 
 const createProjectLi = (project) => {
   const projectLi = createElement("li", "project", project);
@@ -96,14 +103,14 @@ const createProjectLi = (project) => {
   })
 };
 
+// Display list of projects from array
+
 const createProjectList = () => {
   projectWrap.innerHTML = "";
   taskManager.categories.map((project) => createProjectLi(project));
 };
 
-// Todo form
-
-// Create select options from category array
+// Create select options from projects/category array
 
 const generateSelectOptions = () => {
   const categorySelect = document.getElementById("category");
@@ -117,9 +124,34 @@ const generateSelectOptions = () => {
   return categorySelect;
 };
 
+// Project form
+
+const projectForm = document.getElementById("project-form");
+
+projectForm.onsubmit = (e) => {
+  e.preventDefault();
+  const formData = new FormData(projectForm);
+  const newProject = {};
+
+  formData.forEach((value, key) => (newProject[key] = value));
+  taskManager.categories.push(newProject.name);
+  createProjectList();
+  generateSelectOptions();
+  projectForm.reset();
+};
+
+// Open & close project form modal
+
+const addProjectButton = document.getElementById("add-project-button");
+const closeProjectModal = document.getElementById("cancel-project");
+addProjectButton.addEventListener("click", () => projectForm.style.display = "block");
+closeProjectModal.addEventListener("click", () => projectForm.style.display = "none");
+
+// Todo form
+
 const todoForm = document.querySelector(".task-form");
 
-// Edit todo
+// Fill out todo form when editing todos
 
 const fillEditForm = (task) => {
   todoForm.style.display = "block";
@@ -130,7 +162,7 @@ const fillEditForm = (task) => {
   document.getElementById("date").value = task.date;
 };
 
-// Add todo
+// Add/edit todo form
 
 todoForm.onsubmit = (e) => {
   e.preventDefault();
@@ -156,30 +188,15 @@ todoForm.onsubmit = (e) => {
   todoForm.style.display = "none";
 };
 
-// Add to do form modal
+// Open & close to do form modal
 
-const openModal = document.getElementById("add-task-button");
-const closeModal = document.getElementById("cancel-task");
-openModal.addEventListener("click", () => {
+const addTodoButton = document.getElementById("add-task-button");
+const closeTodoModal = document.getElementById("cancel-task");
+addTodoButton.addEventListener("click", () => {
   document.getElementById("form-add-button").textContent = "Add";
   todoForm.style.display = "block";
 });
-closeModal.addEventListener("click", () => (todoForm.style.display = "none"));
+closeTodoModal.addEventListener("click", () => (todoForm.style.display = "none"));
 
-// Project form
-
-const projectForm = document.getElementById("project-form");
-
-projectForm.onsubmit = (e) => {
-  e.preventDefault();
-  const formData = new FormData(projectForm);
-  const newProject = {};
-
-  formData.forEach((value, key) => (newProject[key] = value));
-  taskManager.categories.push(newProject.name);
-  createProjectList();
-  generateSelectOptions();
-  projectForm.reset();
-};
 
 export { displayTodos, createProjectList, generateSelectOptions };
