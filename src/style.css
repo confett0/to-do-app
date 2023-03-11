@@ -199,7 +199,8 @@ button {
   width: 60px;
   position: absolute;
   right: 5%;
-  bottom: 10%;
+  top: 80%;
+  transition: 300ms;
 }
 
 #add-task-button:hover {

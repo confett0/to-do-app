@@ -34,13 +34,10 @@ const taskManager = {
     this.list.splice(this.list.indexOf(task), 1);
   },
 
-  deleteCategory(category) {
-    this.categories.splice(this.categories.indexOf(category),1);
+  deleteCategory(project) {
+    this.categories.splice(this.categories.indexOf(project),1);
+    this.list = this.list.filter(task => task.category !== project);
   }
 };
-
-taskManager.addTask("eat", "home");
-taskManager.addTask("sleep", "work");
-taskManager.addTask("repeat", "home");
 
 export { Task, taskManager, editTask, doneUndone };

@@ -73,7 +73,7 @@ const createTodoDiv = (todo) => {
 // Render todos
 
 const displayTodos = (list) => {
-  wrap.innerHTML = "";
+  wrap.replaceChildren();
   list.map((todo) => createTodoDiv(todo));
 };
 
@@ -88,34 +88,11 @@ showAll.addEventListener("click", () => {
   projectTitle.textContent = "All tasks";
 });
 
-// Create projects dom elements
-
-const createProjectLi = (project) => {
-  const projectLi = createElement("li", "project", project);
-  const idName = project.toLowerCase();
-  projectLi.setAttribute("id", idName);
-
-  projectWrap.appendChild(projectLi);
-
-  projectLi.addEventListener("click", (e) => {
-    displayTodos(projectFilter(e.target.id));
-    projectTitle.textContent = e.target.id;
-  })
-};
-
-// Display list of projects from array
-
-const createProjectList = () => {
-  getProjects();
-  projectWrap.innerHTML = "";
-  taskManager.categories.map((project) => createProjectLi(project));
-};
-
 // Create select options from projects/category array
 
 const generateSelectOptions = () => {
   const categorySelect = document.getElementById("category");
-  categorySelect.innerHTML = "";
+  categorySelect.replaceChildren();
   for (let i = 0; i < taskManager.categories.length; i++) {
     const el = document.createElement("option");
     el.textContent = taskManager.categories[i];
@@ -124,6 +101,40 @@ const generateSelectOptions = () => {
   }
   
   return categorySelect;
+};
+
+// Display list of projects from array
+
+const createProjectList = () => {
+  getProjects();
+  projectWrap.replaceChildren();
+  taskManager.categories.map((project) => createProjectDiv(project));
+};
+
+// Create projects dom elements
+
+const createProjectDiv = (project) => {
+  const projectDiv = createElement("div", "project");
+  const projectName = createElement("h3", "project-name", project)
+  const deleteProjectButton = createElement("div","delete-project-button", "x");
+
+  projectDiv.append(projectName, deleteProjectButton);
+  projectWrap.appendChild(projectDiv);
+
+  deleteProjectButton.addEventListener("click", () => {
+    taskManager.deleteCategory(project);
+    saveProjects();
+    saveTasks();
+    displayTodos(taskManager.list);
+    generateSelectOptions();
+    createProjectList();
+  });
+
+  projectName.addEventListener("click", () => {
+    displayTodos(projectFilter(project));
+    projectTitle.textContent = project;
+  })
+
 };
 
 // Project form
