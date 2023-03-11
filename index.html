@@ -16,25 +16,31 @@
 
     <main>
       <div class="sidebar">
-        <div class="sidebar-links">
-          <h2 id="show-all">All</h2>
-          <h2 id="today">Today</h2>
-          <h2 id="upcoming">Upcoming</h2>
-          <hr>
-          <h2>Projects</h2>
-          <ul class="project-list"></ul>
-          <button type="button" id="add-project-button">New project</button>
-        </div>
-        <form id="project-form">
-          <div class="form-rows">
-            <label for="project-name">Project name</label>
-            <input type="text" name="name" id="project-name" required />
+        <div class="sidebar-wrap">
+          <div class="sidebar-links">
+            <h2 id="show-all">All</h2>
+            <h2 id="today">Today</h2>
+            <h2 id="upcoming">Upcoming</h2>
+            <hr />
+            <h2>Projects</h2>
+            <ul class="project-list"></ul>
+            <button type="button" id="add-project-button">New project</button>
           </div>
-          <button type="submit">Add</button>
-          <button class="cancel-button" id="cancel-project" type="submit">
-            Cancel
-          </button>
-        </form>
+          <form id="project-form">
+            <div class="form-rows">
+              <label for="project-name">Project name</label>
+              <input type="text" name="name" id="project-name" required />
+            </div>
+            <button type="submit">Add</button>
+            <button class="cancel-button" id="cancel-project" type="submit">
+              Cancel
+            </button>
+          </form>
+        </div>
+        <p>
+          Copyright ©
+          <a href="https://github.com/confett0" target="_blank">confetto</a>
+        </p>
       </div>
       <div class="content">
         <div class="content-wrap">
@@ -62,6 +68,5 @@
         <button type="button" id="add-task-button">+</button>
       </div>
     </main>
-    <footer></footer>
   </body>
 </html>
