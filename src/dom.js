@@ -103,23 +103,17 @@ const generateSelectOptions = () => {
   return categorySelect;
 };
 
-// Display list of projects from array
-
-const createProjectList = () => {
-  getProjects();
-  projectWrap.replaceChildren();
-  taskManager.categories.map((project) => createProjectDiv(project));
-};
-
 // Create projects dom elements
 
 const createProjectDiv = (project) => {
   const projectDiv = createElement("div", "project");
   const projectName = createElement("h3", "project-name", project)
-  const deleteProjectButton = createElement("div","delete-project-button", "x");
+  const deleteProjectButton = createElement("img","delete-project-button", "");
+  deleteProjectButton.src = Delete;
 
   projectDiv.append(projectName, deleteProjectButton);
   projectWrap.appendChild(projectDiv);
+
 
   deleteProjectButton.addEventListener("click", () => {
     taskManager.deleteCategory(project);
@@ -137,6 +131,14 @@ const createProjectDiv = (project) => {
 
 };
 
+// Display list of projects from array
+
+const createProjectList = () => {
+  getProjects();
+  projectWrap.replaceChildren();
+  taskManager.categories.map((project) => createProjectDiv(project));
+};
+
 // Project form
 
 const projectForm = document.getElementById("project-form");
@@ -152,6 +154,7 @@ projectForm.onsubmit = (e) => {
   createProjectList();
   generateSelectOptions();
   projectForm.reset();
+  projectForm.style.display = "none"
 };
 
 // Open & close project form modal

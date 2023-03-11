@@ -213,9 +213,21 @@ button {
   margin-bottom: 25px;
 }
 
-.project-list li {
+.project {
   cursor: pointer;
-  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+  margin-bottom: 10px;
+}
+
+.delete-project-button {
+  display: none;
+}
+
+.project:hover > .delete-project-button {
+  display: block;
 }
 
 #add-project-button {
