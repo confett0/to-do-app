@@ -1,5 +1,6 @@
+import format from "date-fns/format";
 import { Task, taskManager, editTask, doneUndone } from "./task";
-import { projectFilter } from "./todo-app";
+import { projectFilter, dueToday, dueLater } from "./todo-app";
 import { saveTasks, saveProjects, getTasks, getProjects } from "./localstorage";
 import Edit from "./assets/edit.png";
 import Delete from "./assets/delete.png";
@@ -59,6 +60,7 @@ const createTodoDiv = (todo) => {
     todoName.classList.toggle("done");
     doneUndone(todo);
     saveTasks();
+    getTasks();
   });
   editButton.addEventListener("click", () => fillEditForm(todo));
   deleteTodo.addEventListener("click", () => {
@@ -86,6 +88,24 @@ showAll.addEventListener("click", () => {
   getTasks();
   displayTodos(taskManager.list);
   projectTitle.textContent = "All tasks";
+});
+
+// Show today's todos button
+
+const showToday = document.getElementById("today");
+showToday.addEventListener("click", () => {
+  getTasks();
+  displayTodos(dueToday());
+  projectTitle.textContent = "Today";
+});
+
+// Show upcoming todos button
+
+const showUpcoming = document.getElementById("upcoming");
+showUpcoming.addEventListener("click", () => {
+  getTasks();
+  displayTodos(dueLater());
+  projectTitle.textContent = "Upcoming";
 });
 
 // Create select options from projects/category array
@@ -187,6 +207,10 @@ todoForm.onsubmit = (e) => {
   const newTodo = {};
 
   formData.forEach((value, key) => (newTodo[key] = value));
+
+  if (newTodo.date !== "") {
+    newTodo.date = format(new Date(newTodo.date), "dd LLL");
+  }
 
   if (document.getElementById("form-add-button").textContent === "Edit") {
     const editTodo = taskManager.list.filter(

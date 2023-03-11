@@ -10,7 +10,7 @@ const saveProjects = () => {
 
 const getTasks = () => {
   if (localStorage.getItem("tasks") === null) {
-    taskManager.list = [{name: "eat", category: "home"}, {name: "sleep", category: "work"}, {name: "repeat", category: "home"}]
+    taskManager.list = [{name: "eat", category: "home", id: 1}, {name: "sleep", category: "work", id: 2}, {name: "repeat", category: "home", id: 3}]
   } else {
   taskManager.list = JSON.parse(localStorage.getItem("tasks"));
 }

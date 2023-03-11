@@ -99,7 +99,8 @@ main {
   cursor: pointer;
 }
 
-.edit-button {
+.todo-date {
+  font-size: 0.8rem;
   margin-left: auto;
 }
 
