@@ -360,6 +360,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
+/***/ "./src/collapsed-sidebar.js":
+/*!**********************************!*\
+  !*** ./src/collapsed-sidebar.js ***!
+  \**********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"toggleNav\": () => (/* binding */ toggleNav)\n/* harmony export */ });\nconst toggleNav = () => {\n    const sidebar = document.querySelector(\".sidebar\");\n    sidebar.classList.toggle(\"hidden\");\n  };\n  \n  document\n    .querySelector(\".open-sidebar\")\n    .addEventListener(\"click\", () => toggleNav());\n  \n  \n\n\n\n//# sourceURL=webpack://to-do-app/./src/collapsed-sidebar.js?");
+
+/***/ }),
+
 /***/ "./src/dom.js":
 /*!********************!*\
   !*** ./src/dom.js ***!
@@ -376,7 +386,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./task */ \"./src/task.js\");\n/* harmony import */ var _localstorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./localstorage */ \"./src/localstorage.js\");\n\n\n\n\n(0,_localstorage__WEBPACK_IMPORTED_MODULE_2__.getTasks)();\n(0,_dom__WEBPACK_IMPORTED_MODULE_0__.displayTodos)(_task__WEBPACK_IMPORTED_MODULE_1__.taskManager.list);\n(0,_dom__WEBPACK_IMPORTED_MODULE_0__.createProjectList)();\n(0,_dom__WEBPACK_IMPORTED_MODULE_0__.generateSelectOptions)();\n\n//# sourceURL=webpack://to-do-app/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom */ \"./src/dom.js\");\n/* harmony import */ var _task__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./task */ \"./src/task.js\");\n/* harmony import */ var _localstorage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./localstorage */ \"./src/localstorage.js\");\n/* harmony import */ var _collapsed_sidebar__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./collapsed-sidebar */ \"./src/collapsed-sidebar.js\");\n\n\n\n\n\n(0,_localstorage__WEBPACK_IMPORTED_MODULE_2__.getTasks)();\n(0,_dom__WEBPACK_IMPORTED_MODULE_0__.displayTodos)(_task__WEBPACK_IMPORTED_MODULE_1__.taskManager.list);\n(0,_dom__WEBPACK_IMPORTED_MODULE_0__.createProjectList)();\n(0,_dom__WEBPACK_IMPORTED_MODULE_0__.generateSelectOptions)();\n\n//# sourceURL=webpack://to-do-app/./src/index.js?");
 
 /***/ }),
 
