@@ -10,7 +10,7 @@ const saveProjects = () => {
 
 const getTasks = () => {
   if (localStorage.getItem("tasks") === null) {
-    taskManager.list = [{name: "eat", category: "home", id: 1}, {name: "sleep", category: "work", id: 2}, {name: "repeat", category: "home", id: 3}]
+    taskManager.list = [{name: "Welcome to my todo app!", category: "Demo project", id: 1}]
   } else {
   taskManager.list = JSON.parse(localStorage.getItem("tasks"));
 }
@@ -18,7 +18,7 @@ const getTasks = () => {
 
 const getProjects = () => {
   if (localStorage.getItem("projects") === null) {
-    taskManager.categories = ["work", "home"];
+    taskManager.categories = ["Demo project"];
   } else {
   taskManager.categories = JSON.parse(localStorage.getItem("projects"));
 }
