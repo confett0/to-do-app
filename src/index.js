@@ -1,4 +1,4 @@
-import "./style.css";
+import "src/style.css";
 import { displayTodos, createProjectList, generateSelectOptions } from "./dom";
 import { taskManager } from "./task";
 import { getTasks, getProjects } from "./localstorage";
